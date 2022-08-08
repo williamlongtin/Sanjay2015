@@ -5,6 +5,7 @@ from geom import *
 import random
 
 gGID = 0 # global ID for cells
+datalist = []
 
 class Population:
 	"Population of cells"
@@ -389,6 +390,9 @@ class Network:
 			id.mark(h.g[0],tv,"O",sz,col[pon],1)
 			pon += 1
 		h.g[0].exec_menu("View = plot")
+        
+        for i in net.cells[0]:
+            datalist.append(net.cells[0].lidvec[i].to_python())
 
 	def setrastervecs(self):
 		self.myidvec = h.Vector() #IDs and firing times for ALL cells

@@ -1,4 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Aug  7 19:00:01 2022
 
+@author: willi
+"""
 if __name__ == "__main__":
 
     import sys
@@ -44,8 +49,10 @@ if __name__ == "__main__":
 
     h.tstop = 100
     h.run()
-    import pickle
-    testdata = net.cells[0].lidvec[0].to_python()
-    with open('netresults.pickle', 'wb') as f:
-        pickle.dump(testdata, f, pickle.HIGHEST_PROTOCOL)
-
+    net.rasterplot()
+    net.calc_lfp()
+    net.pravgrates()
+    myg = h.Graph()
+    net.vlfp.plot(myg,h.dt)
+    myg.exec_menu("View = plot")
+    myg.exec_menu("New Axis")
